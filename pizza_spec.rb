@@ -29,21 +29,26 @@ describe Pizza do
       expect(pizza2.description).to eq "Mo's favorite pizza"
     end
 
-    it "returns description" do
+    it "returns time_baked" do
       expect(pizza.time_baked).to eq 25
     end
 
-    it "returns description" do
+    it "returns a different time baked" do
       expect(pizza2.time_baked).to eq 45
     end
-
-
-
   end
 
-  # it "must be initialized with a name thats a string"
-
-  # end
+  context "must be initialized with a name thats a string" do
+    it "throws an error if the name is a number" do
+      expect { Pizza.new(name: 8) }.to raise_error
+   end
+    it "throws an error if the name is a boolean" do
+      expect { Pizza.new(name: true) }.to raise_error
+   end
+    it "throws an error if initialized without a name" do
+      expect { Pizza.new(description: "tacos") }.to raise_error
+    end
+ end
 
 
 end
